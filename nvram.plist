@@ -18,6 +18,8 @@
 			<data>
 			Bg==
 			</data>
+			<key>boot-args</key>
+			<string>igfxonln=1 debug=0x100 swd_panic=1 forceRenderStandby=0 keepsyms=1 -wegnoegpu</string>
 			<key>csr-active-config</key>
 			<data>
 			/w8AAA==
