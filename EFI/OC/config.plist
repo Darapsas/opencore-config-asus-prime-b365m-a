@@ -73,8 +73,12 @@
 		<key>Patch</key>
 		<array>
 			<dict>
+				<key>Base</key>
+				<string></string>
+				<key>BaseSkip</key>
+				<integer>0</integer>
 				<key>Comment</key>
-				<string>_Q11 to XQ11</string>
+				<string>Replace one byte sequence with another (_Q11 to XQ11)</string>
 				<key>Count</key>
 				<integer>1</integer>
 				<key>Enabled</key>
@@ -99,6 +103,10 @@
 				<data></data>
 			</dict>
 			<dict>
+				<key>Base</key>
+				<string>\_SB.PCI0.LPCB.HPET</string>
+				<key>BaseSkip</key>
+				<integer>0</integer>
 				<key>Comment</key>
 				<string>_Q12 to XQ12</string>
 				<key>Count</key>
@@ -205,6 +213,8 @@
 			<true/>
 			<key>EnableWriteUnprotector</key>
 			<true/>
+			<key>ForceBooterSignature</key>
+			<false/>
 			<key>ForceExitBootServices</key>
 			<false/>
 			<key>ProtectMemoryRegions</key>
@@ -361,24 +371,6 @@
 				<string>Any</string>
 				<key>BundlePath</key>
 				<string>CPUFriendDataProvider.kext</string>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string></string>
-				<key>MaxKernel</key>
-				<string></string>
-				<key>PlistPath</key>
-				<string>Contents/Info.plist</string>
-				<key>Enabled</key>
-				<true/>
-				<key>MinKernel</key>
-				<string></string>
-				<key>ExecutablePath</key>
-				<string>Contents/MacOS/HoRNDIS</string>
-				<key>Arch</key>
-				<string>Any</string>
-				<key>BundlePath</key>
-				<string>HoRNDIS.kext</string>
 			</dict>
 			<dict>
 				<key>Comment</key>
@@ -741,12 +733,14 @@
 			<true/>
 			<key>PowerTimeoutKernelPanic</key>
 			<true/>
+			<key>ProvideCurrentCpuInfo</key>
+			<false/>
+			<key>SetApfsTrimTimeout</key>
+			<integer>-1</integer>
 			<key>ThirdPartyDrives</key>
 			<false/>
 			<key>XhciPortLimit</key>
 			<false/>
-			<key>SetApfsTrimTimeout</key>
-			<integer>-1</integer>
 		</dict>
 		<key>Scheme</key>
 		<dict>
@@ -770,12 +764,18 @@
 			<string>None</string>
 			<key>HideAuxiliary</key>
 			<false/>
+			<key>LauncherOption</key>
+			<string>Disabled</string>
+			<key>LauncherPath</key>
+			<string>Default</string>
 			<key>PickerAttributes</key>
 			<integer>17</integer>
 			<key>PickerAudioAssist</key>
 			<false/>
 			<key>PickerMode</key>
 			<string>External</string>
+			<key>PickerVariant</key>
+			<string>Acidanthera\GoldenGate</string>
 			<key>PollAppleHotKeys</key>
 			<false/>
 			<key>ShowPicker</key>
@@ -784,12 +784,6 @@
 			<integer>0</integer>
 			<key>Timeout</key>
 			<integer>5</integer>
-			<key>PickerVariant</key>
-			<string>Modern</string>
-			<key>LauncherOption</key>
-			<string>Disabled</string>
-			<key>LauncherPath</key>
-			<string>Default</string>
 		</dict>
 		<key>Debug</key>
 		<dict>
@@ -821,6 +815,8 @@
 				<string>Not signed for security reasons</string>
 				<key>Enabled</key>
 				<false/>
+				<key>Flavour</key>
+				<string>Auto</string>
 				<key>Name</key>
 				<string>CustomOS</string>
 				<key>Path</key>
@@ -835,6 +831,8 @@
 			<true/>
 			<key>AllowSetDefault</key>
 			<true/>
+			<key>AllowToggleSip</key>
+			<false/>
 			<key>ApECID</key>
 			<integer>0</integer>
 			<key>AuthRestart</key>
@@ -867,6 +865,8 @@
 				<string>OpenShell.efi</string>
 				<key>RealPath</key>
 				<false/>
+				<key>Flavour</key>
+				<string>Auto</string>
 				<key>Name</key>
 				<string>OpenShell.efi</string>
 				<key>TextMode</key>
@@ -902,14 +902,16 @@
 			<dict>
 				<key>SystemAudioVolume</key>
 				<data>Rg==</data>
+				<key>boot-args</key>
+				<string>igfxonln=1 igfxrpsc=1 swd_panic=1 forceRenderStandby=0 keepsyms=1 timestamps=1 -wegnoegpu</string>
 				<key>csr-active-config</key>
 				<data>/w8AAA==</data>
 				<key>prev-lang:kbd</key>
 				<data>cnUtUlU6MjUy</data>
 				<key>run-efi-updater</key>
 				<string>No</string>
-				<key>boot-args</key>
-				<string>igfxonln=1 debug=0x100 swd_panic=1 forceRenderStandby=0 keepsyms=1 -wegnoegpu</string>
+				<key>ForceDisplayRotationInEFI</key>
+				<integer>0</integer>
 			</dict>
 		</dict>
 		<key>Delete</key>
@@ -926,6 +928,7 @@
 			<key>7C436110-AB2A-4BBB-A880-FE41995C9F82</key>
 			<array>
 				<string>boot-args</string>
+				<string>ForceDisplayRotationInEFI</string>
 			</array>
 		</dict>
 		<key>LegacyEnable</key>
@@ -971,7 +974,9 @@
 		<false/>
 		<key>Generic</key>
 		<dict>
-			<key>AdviseWindows</key>
+			<key>AdviseFeatures</key>
+			<false/>
+			<key>MaxBIOSVersion</key>
 			<false/>
 			<key>MLB</key>
 			<string>C02909306GULNV9AD</string>
@@ -989,8 +994,6 @@
 			<string>C02YC01RJV3Q</string>
 			<key>SystemUUID</key>
 			<string>827F16E3-3858-487C-8F27-7934F8B1C868</string>
-			<key>MaxBIOSVersion</key>
-			<false/>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>
@@ -1020,6 +1023,21 @@
 			<key>MinVersion</key>
 			<integer>0</integer>
 		</dict>
+		<key>AppleInput</key>
+		<dict>
+			<key>AppleEvent</key>
+			<string>Builtin</string>
+			<key>CustomDelays</key>
+			<false/>
+			<key>KeyInitialDelay</key>
+			<integer>50</integer>
+			<key>KeySubsequentDelay</key>
+			<integer>5</integer>
+			<key>PointerSpeedDiv</key>
+			<integer>1</integer>
+			<key>PointerSpeedMul</key>
+			<integer>1</integer>
+		</dict>
 		<key>Audio</key>
 		<dict>
 			<key>AudioCodec</key>
@@ -1034,15 +1052,19 @@
 			<integer>20</integer>
 			<key>PlayChime</key>
 			<string>Auto</string>
-			<key>VolumeAmplifier</key>
-			<integer>0</integer>
+			<key>ResetTrafficClass</key>
+			<false/>
 			<key>SetupDelay</key>
+			<integer>0</integer>
+			<key>VolumeAmplifier</key>
 			<integer>0</integer>
 		</dict>
 		<key>ConnectDrivers</key>
 		<true/>
 		<key>Drivers</key>
 		<array>
+			<string>AudioDxe.efi</string>
+			<string>CrScreenshotDxe.efi</string>
 			<string>OpenCanopy.efi</string>
 			<string>OpenHfsPlus.efi</string>
 			<string>OpenRuntime.efi</string>
@@ -1053,8 +1075,6 @@
 			<false/>
 			<key>KeyForgetThreshold</key>
 			<integer>5</integer>
-			<key>KeyMergeThreshold</key>
-			<integer>2</integer>
 			<key>KeySupport</key>
 			<true/>
 			<key>KeySupportMode</key>
@@ -1078,6 +1098,8 @@
 			<false/>
 			<key>ForceResolution</key>
 			<false/>
+			<key>GopPassThrough</key>
+			<string>Disabled</string>
 			<key>IgnoreTextInGraphics</key>
 			<false/>
 			<key>ProvideConsoleGop</key>
@@ -1103,7 +1125,7 @@
 			<false/>
 			<key>AppleDebugLog</key>
 			<false/>
-			<key>AppleEvent</key>
+			<key>AppleEg2Info</key>
 			<false/>
 			<key>AppleFramebufferInfo</key>
 			<false/>
@@ -1136,11 +1158,21 @@
 		</dict>
 		<key>Quirks</key>
 		<dict>
+			<key>ActivateHpetSupport</key>
+			<false/>
+			<key>DisableSecurityPolicy</key>
+			<true/>
+			<key>EnableVectorAcceleration</key>
+			<true/>
 			<key>ExitBootServicesDelay</key>
 			<integer>0</integer>
+			<key>ForgeUefiSupport</key>
+			<false/>
 			<key>IgnoreInvalidFlexRatio</key>
 			<false/>
 			<key>ReleaseUsbOwnership</key>
+			<false/>
+			<key>ReloadOptionRoms</key>
 			<false/>
 			<key>RequestBootVarRouting</key>
 			<true/>
@@ -1148,8 +1180,6 @@
 			<integer>0</integer>
 			<key>UnblockFsConnect</key>
 			<false/>
-			<key>DisableSecurityPolicy</key>
-			<true/>
 		</dict>
 		<key>ReservedMemory</key>
 		<array>
