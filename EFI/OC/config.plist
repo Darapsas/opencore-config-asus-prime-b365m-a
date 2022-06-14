@@ -786,7 +786,7 @@
 				<key>FuzzyMatch</key>
 				<true />
 				<key>KernelArch</key>
-				<string>x86_64</string>
+				<string>Auto</string>
 				<key>KernelCache</key>
 				<string>Auto</string>
 			</dict>
@@ -893,7 +893,7 @@
 				<key>ScanPolicy</key>
 				<integer>0</integer>
 				<key>SecureBootModel</key>
-				<string>Default</string>
+				<string>Disabled</string>
 				<key>Vault</key>
 				<string>Optional</string>
 			</dict>
@@ -1054,13 +1054,13 @@
 				<key>GlobalConnect</key>
 				<false />
 				<key>HideVerbose</key>
-				<true />
+				<false />
 				<key>JumpstartHotPlug</key>
 				<false />
 				<key>MinDate</key>
-				<integer>0</integer>
+				<integer>-1</integer>
 				<key>MinVersion</key>
-				<integer>0</integer>
+				<integer>-1</integer>
 			</dict>
 			<key>AppleInput</key>
 			<dict>
@@ -1072,6 +1072,8 @@
 				<integer>50</integer>
 				<key>KeySubsequentDelay</key>
 				<integer>5</integer>
+				<key>GraphicsInputMirroring</key>
+				<true />
 				<key>PointerSpeedDiv</key>
 				<integer>1</integer>
 				<key>PointerSpeedMul</key>
